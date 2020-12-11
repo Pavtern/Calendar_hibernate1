@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -35,12 +36,14 @@ public class App {
 //                tasks = (List<TaskEntity>) dao.get(TaskEntity.class, id);
 //        tasks.forEach(s -> System.out.println(s.getName()));
 
-        Dao<Trans, TaskEntity> dao = new Dao();
+        Dao<TaskEntity> dao = new Dao();
         TaskEntity task = new TaskEntity();
         task.setName("123");
         task.setDate(Timestamp.valueOf(LocalDateTime.now()));
         dao.save(task);
-
+        dao.delete(task);
+        System.out.println(task.getName());
     }
+
 
 }
